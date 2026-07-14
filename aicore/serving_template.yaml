@@ -1,0 +1,40 @@
+apiVersion: ai.sap.com/v1alpha1
+kind: ServingTemplate
+metadata:
+  name: predictive-returns-serving
+  annotations:
+    scenarios.ai.sap.com/description: "Predictive Return Risk Model"
+    scenarios.ai.sap.com/name: "predictive-returns"
+    executables.ai.sap.com/description: "Serves the return risk prediction API"
+    executables.ai.sap.com/name: "predictive-returns-server"
+  labels:
+    scenarios.ai.sap.com/id: "predictive-returns"
+    ai.sap.com/version: "1.0.0"
+spec:
+  inputs:
+    parameters: []
+    artifacts: []
+  template:
+    apiVersion: "serving.kserve.io/v1beta1"
+    metadata:
+      annotations:
+        autoscaling.knative.dev/metric: rps
+        autoscaling.knative.dev/target: "100"
+        autoscaling.knative.dev/targetBurstCapacity: "0"
+      labels:
+        ai.sap.com/resourcePlan: starter
+    spec:
+      predictor:
+        imagePullSecrets:
+          - name: YOUR_DOCKER_REGISTRY_SECRET
+        containers:
+          - name: kserve-container
+            image: srinivasvemuri/predictive-returns:latest
+            ports:
+              - containerPort: 9001
+                protocol: TCP
+            env:
+              - name: MODEL_PATH
+                value: "/app/model/model.pkl"
+              - name: ENCODER_PATH
+                value: "/app/model/encoders.pkl"
