@@ -26,7 +26,7 @@ spec:
     spec:
       predictor:
         imagePullSecrets:
-          - name: YOUR_DOCKER_REGISTRY_SECRET
+          - name: predictivereturns
         containers:
           - name: kserve-container
             image: srinivasvemuri/predictive-returns:latest
