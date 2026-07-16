@@ -1,12 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: './',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+  },
   server: {
     proxy: {
-      '/api': 'http://localhost:8000',
+      '/api': 'http://localhost:4004',
+      '/insights-stream': 'http://localhost:4004',
     },
   },
 })

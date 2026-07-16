@@ -1,0 +1,46 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "predictivereturns",
+    "type": "application",
+    "title": "Predictive Returns",
+    "description": "Predict return risk before order is shipped",
+    "icon": "sap-icon://alert",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "PredictiveReturns",
+          "action": "display"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "HTML5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "predictivereturns.service"
+  }
+}

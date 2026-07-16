@@ -5,16 +5,16 @@ import MainContent from './components/MainContent.jsx'
 
 export default function App() {
   const [formData, setFormData] = useState({
-    customer_type: '',
-    material_group: '',
-    price: '',
-    size: '',
-    discount: '',
-    quantity: '',
-    season: '',
-    brand: '',
-    channel: '',
-    customer_purchase_count: '',
+    customer_type: 'repeat',
+    material_group: 'shirts',
+    price: '1999',
+    size: 'M',
+    discount: '35.5',
+    quantity: '2',
+    season: 'Summer',
+    brand: 'BrandA',
+    channel: 'Online',
+    customer_purchase_count: '3',
   })
   const [result, setResult] = useState(null)
   const [isLoading, setIsLoading] = useState(false)

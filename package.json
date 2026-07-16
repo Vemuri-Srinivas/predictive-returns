@@ -1,0 +1,48 @@
+{
+  "name": "predictivereturns",
+  "version": "1.0.0",
+  "description": "Predictive Returns - Return Risk Prediction",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "^22.0.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "watch:hybrid": "cds watch --profile hybrid",
+    "dev": "concurrently \"cds watch --profile hybrid\" \"npm run dev --prefix ui\"",
+    "build:cds": "npx cds build --production",
+    "build:mta": "mbt build",
+    "deploy:cf": "npm run build:mta && cf deploy mta_archives/predictivereturns_1.0.0.mtar --retries 1"
+  },
+  "dependencies": {
+    "@sap-ai-sdk/core": "^1.8.0",
+    "@sap-ai-sdk/orchestration": "^2.13.0",
+    "@sap-cloud-sdk/http-client": "^4.7.0",
+    "@sap/cds": "^9.9.1",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2.4.0",
+    "@sap/cds-dk": "^9.3.2",
+    "cds-plugin-ui5": "^0.13.0",
+    "concurrently": "^9.0.0"
+  },
+  "cds": {
+    "cors": [
+      {
+        "origin": true,
+        "credentials": true
+      }
+    ],
+    "requires": {
+      "[development]": {
+        "auth": "dummy"
+      },
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    }
+  }
+}

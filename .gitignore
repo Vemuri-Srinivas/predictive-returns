@@ -1,0 +1,8 @@
+
+# added by cds
+.cdsrc-private.json
+
+node_modules/
+ui/node_modules/
+gen/
+mta_archives/
