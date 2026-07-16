@@ -41,6 +41,8 @@ modules:
     parameters:
       disk-quota: 256M
       memory: 128M
+      env:
+        COMPRESSION: false
     build-parameters:
       ignore:
         - node_modules
