@@ -14,7 +14,8 @@
       "target": "/insights-stream",
       "destination": "srv-api",
       "authenticationType": "none",
-      "csrfProtection": false
+      "csrfProtection": false,
+      "streaming": true
     },
     {
       "source": "^(.*)$",
